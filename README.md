@@ -3,7 +3,8 @@
 **Tagline**: I got you.
 
 > 通过诊断式提问帮用户澄清模糊需求，然后直接执行。
-
+A Claude Code skill that helps users clarify vague intentions through diagnostic questioning, then executes
+  directly.
 ---
 
 ## 这是什么？
