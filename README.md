@@ -3,14 +3,14 @@
 **Tagline**: I got you.
 
 > 通过诊断式提问帮用户澄清模糊需求，然后直接执行。
-A Claude Code skill that helps users clarify vague intentions through diagnostic questioning, then executes
-  directly.
+
 ---
 
 ## 这是什么？
 
 Intent Clarity 是一个 Claude Code 技能包，帮助那些"不知道怎么跟AI说"的用户。
-
+A Claude Code skill that helps users clarify vague intentions through diagnostic questioning, then executes
+directly.
 **不是**帮你生成更好的 prompt，**而是**我来帮你理清你真正想要什么，然后直接开始干活。
 
 ---
