@@ -8,10 +8,10 @@
 
 ## 这是什么？
 
-Intent Clarity 是一个 Claude Code 技能包，帮助那些"不知道怎么跟AI说"的用户。
+Intent Clarity 是一个 Agent Skill，帮助那些"不知道怎么跟AI说"的用户。同时支持 Claude Code 和 Codex CLI。
 
-A Claude Code skill that helps users clarify vague intentions through diagnostic questioning, then executes
-directly.
+An Agent Skill (Claude Code & Codex) that helps users clarify vague intentions through diagnostic questioning,
+then executes directly.
 
 **不是**帮你生成更好的 prompt，**而是**我来帮你理清你真正想要什么，然后直接开始干活。
 
@@ -63,19 +63,35 @@ Intent Clarity：
 
 ## 安装
 
-### 方法1：手动安装
+### Claude Code
 
 ```bash
 # 1. 克隆仓库
-git clone https://github.com/你的用户名/intent-clarity.git
+git clone https://github.com/user-ffn/intent-clarity.git
 
 # 2. 复制到 Claude Code 技能目录
 cp -r intent-clarity/skill ~/.claude/skills/intent-clarity
 ```
 
-### 方法2：直接下载
+或者直接下载 `skill/SKILL.md`，放到 `~/.claude/skills/intent-clarity/` 目录下。
 
-下载 `skill/SKILL.md`，放到 `~/.claude/skills/intent-clarity/` 目录下。
+### Codex CLI
+
+```bash
+# 1. 克隆仓库
+git clone https://github.com/user-ffn/intent-clarity.git
+
+# 2. 复制到 Codex 技能目录
+cp -r intent-clarity/codex ~/.codex/skills/intent-clarity
+```
+
+Codex 版内容和 Claude 版一致，仅 frontmatter 做了适配（Codex 不支持 `whenToUse` 字段，
+触发条件合并进了 `description`）。两份文件由 `scripts/sync-codex.py` 从同一份源
+（`skill/SKILL.md`）生成，**只需要维护 `skill/SKILL.md`**，改完跑一下脚本即可同步：
+
+```bash
+python scripts/sync-codex.py
+```
 
 ---
 
@@ -238,8 +254,12 @@ intent-clarity/
 │   ├── task_classifier.py     # 任务类型分类
 │   ├── state_detector.py      # 状态检测
 │   └── question_generator.py  # 问题生成
-├── skill/                     # Skill 版本
-│   └── SKILL.md               # Claude Code 技能包
+├── skill/                     # Claude Code 技能包（唯一维护源）
+│   └── SKILL.md
+├── codex/                     # Codex CLI 技能包（由 skill/SKILL.md 自动生成）
+│   └── SKILL.md
+├── scripts/
+│   └── sync-codex.py          # skill/SKILL.md → codex/SKILL.md 同步脚本
 ├── examples/                  # 示例对话
 └── README.md                  # 本文件
 ```
@@ -253,6 +273,7 @@ intent-clarity/
 - ✅ 5种任务类型分类
 - ✅ 快速澄清 + 深度探索两条路径
 - ✅ Claude Code Skill 实现
+- ✅ Codex CLI Skill 实现
 
 ### v0.2（未来）
 - ⏳ Web 版本（如果需要）
