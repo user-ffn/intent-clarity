@@ -36,8 +36,14 @@ class ClarityDiagnosis:
     UNCLEAR_SIGNALS = [
         "不知道", "不清楚", "不确定", "不太明白",
         "迷茫", "困惑", "纠结", "犹豫",
-        "想做点什么", "做点啥", "干点啥",
+        "想做点什么", "想做点事情", "做点啥", "干点啥",
         "不知道做什么", "不知道说什么", "不知道怎么说"
+    ]
+
+    EXECUTION_SIGNALS = [
+        "帮我", "给我", "请", "我要", "我想让你",
+        "写", "做", "生成", "创建", "设计", "开发", "分析",
+        "总结", "整理", "提取", "翻译", "润色"
     ]
 
     def diagnose(self, user_input):
@@ -76,20 +82,45 @@ class ClarityDiagnosis:
             # 三个都有 → 需求明确
             is_clear = True
             confidence = 0.9
-        elif has_behavior and (has_goal or has_scene):
-            # 行为明确 + (目标或场景) → 灰色地带，需要验证
+        elif has_behavior:
+            # 已经说出具体动作，即使缺少目标/场景，也不应直接进入深度探索；
+            # 这类用户通常只缺少执行细节，先走轻量澄清即可。
             is_clear = None  # None = 需要验证
-            confidence = 0.6
+            confidence = 0.6 if (has_goal or has_scene) else 0.55
         else:
             # 其他情况 → 需求不明确
             is_clear = False
             confidence = 0.7
 
+        missing_dimensions = [
+            name for name, present in (
+                ("行为", has_behavior),
+                ("目标", has_goal),
+                ("场景", has_scene),
+            ) if not present
+        ]
+
+        if is_clear is True:
+            clarity = "clear"
+            route = "direct_execution"
+        elif is_clear is None:
+            clarity = "gray"
+            route = "quick_clarify"
+        else:
+            clarity = "unclear"
+            route = "deep_exploration"
+
         return {
             "is_clear": is_clear,
+            "clarity": clarity,
+            "route": route,
             "has_behavior": has_behavior,
             "has_goal": has_goal,
             "has_scene": has_scene,
+            "missing_dimensions": missing_dimensions,
+            "has_execution_intent": self._check_keywords(
+                user_input, self.EXECUTION_SIGNALS
+            ),
             "confidence": confidence,
             "unclear_signals": unclear_signals
         }

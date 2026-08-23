@@ -8,12 +8,12 @@
 
 ## 这是什么？
 
-Intent Clarity 是一个 Agent Skill，帮助那些"不知道怎么跟AI说"的用户。同时支持 Claude Code 和 Codex CLI。
+Intent Clarity 是一个面向 Claude Code 与 Codex 的 Agent Skill，帮助“有初步想法、但难以转化为可执行 AI 任务”的用户澄清需求并直接推进任务。
 
 An Agent Skill (Claude Code & Codex) that helps users clarify vague intentions through diagnostic questioning,
 then executes directly.
 
-**不是**帮你生成更好的 prompt，**而是**我来帮你理清你真正想要什么，然后直接开始干活。
+**不是**帮你生成更好的 prompt，**而是**识别用户当前最关键的信息缺口，澄清后直接开始执行。
 
 ---
 
@@ -30,21 +30,22 @@ then executes directly.
 - 🤖 "我需要更多信息"
 
 **Intent Clarity 的做法**：
-- ✅ 通过2-5个问题，帮你想清楚
-- ✅ 区分"已确认"和"推断"，不过度解释
+- ✅ 每轮只问一个最影响下一步的问题，避免把对话变成表单
+- ✅ 区分“已确认”和“推断”，不过度解释
+- ✅ 根据需求状态选择澄清、探索、诊断或直接执行
 - ✅ 澄清完直接执行，无缝衔接
 
 ---
 
 ## 工作原理
 
-### 1. 快速澄清（需求明确时）
+### 1. 快速澄清（已有行动目标，但缺少关键信息）
 
 用户："帮我写一篇文章"
 
 Intent Clarity：
 - 判断：需求明确（行为清晰，缺细节）
-- 问2-3个补充问题（主题/受众/格式）
+- 每轮问一个补充问题（主题、受众或格式）
 - 确认理解
 - **直接开始写文章**
 
@@ -58,6 +59,23 @@ Intent Clarity：
 - 用"经历回忆"策略提问（4-5个问题）
 - 逐步聚焦到具体方向
 - **给出具体建议并开始执行**
+
+### 3. 问题诊断（已出现失败现象时）
+
+用户：“我的产品没人用”
+
+Intent Clarity：
+- 先区分是“没人看到产品”，还是“试用后没有继续使用”
+- 了解已尝试的方法与期望结果
+- **定位问题后给出排查或修复路径**
+
+### 4. 直接执行（目标清楚，或只缺待处理材料时）
+
+用户：“帮我润色这段文字”
+
+Intent Clarity：
+- 索取原文
+- **拿到材料后直接完成任务，不进行无关追问**
 
 ---
 
@@ -92,6 +110,16 @@ Codex 版内容和 Claude 版一致，仅 frontmatter 做了适配（Codex 不�
 ```bash
 python scripts/sync-codex.py
 ```
+
+### 核心规则验收
+
+```bash
+python evaluation/build_cases.py
+python -m unittest discover -s tests -v
+```
+
+验收脚本会检查 50 个场景化用例是否完整生成；自动化测试只验证核心规则，
+Skill 的实际对话表现仍需要在 Claude Code 或 Codex 中进行人工对话验收。
 
 ---
 
@@ -238,10 +266,11 @@ Intent Clarity：
 ## 核心技术
 
 - **需求明确度诊断**：行为+目标+场景三维判断
-- **任务类型分类**：5种任务（信息/内容/路径/决策/设计）
+- **任务类型分类**：6种任务（信息/内容/路径/决策/设计/问题诊断）
 - **状态检测**：二维模型（方向×行动）
-- **动态问题生成**：根据任务类型和状态选择问题集
+- **动态问题生成**：优先补充会改变后续方案的关键信息
 - **不确定性管理**：区分已确认信息和推断信息
+- **可重复验收**：将 50 个场景化用例结构化，分别评估路由、首问有效性、过度提问和任务启动
 
 ---
 
@@ -253,13 +282,19 @@ intent-clarity/
 │   ├── diagnosis.py           # 需求明确度诊断
 │   ├── task_classifier.py     # 任务类型分类
 │   ├── state_detector.py      # 状态检测
-│   └── question_generator.py  # 问题生成
+│   ├── question_generator.py  # 问题生成
+│   └── router.py              # 统一路由：收敛诊断、任务和障碍判断
 ├── skill/                     # Claude Code 技能包（唯一维护源）
 │   └── SKILL.md
 ├── codex/                     # Codex CLI 技能包（由 skill/SKILL.md 自动生成）
 │   └── SKILL.md
 ├── scripts/
 │   └── sync-codex.py          # skill/SKILL.md → codex/SKILL.md 同步脚本
+├── evaluation/
+│   ├── cases.json              # 从 test-cases.md 生成的 50 个结构化用例
+│   └── build_cases.py          # 验收集生成脚本
+├── tests/
+│   └── test_core.py            # 核心路由与问题策略测试
 ├── examples/                  # 示例对话
 └── README.md                  # 本文件
 ```
@@ -268,14 +303,22 @@ intent-clarity/
 
 ## 路线图
 
-### v0.1（当前）
+### v0.1（历史版本）
 - ✅ 核心诊断逻辑
 - ✅ 5种任务类型分类
 - ✅ 快速澄清 + 深度探索两条路径
 - ✅ Claude Code Skill 实现
 - ✅ Codex CLI Skill 实现
 
-### v0.2（未来）
+### v1.2（评估闭环升级）
+- ✅ 正式纳入“问题诊断”任务类型
+- ✅ 诊断结果补充清晰度、缺失维度和推荐路径
+- ✅ 区分真障碍与执行困惑，并优先处理执行困惑
+- ✅ 将 50 个验收用例结构化
+- ✅ 增加核心规则自动化测试
+- ✅ Claude / Codex Skill 规则同步
+
+### 后续方向
 - ⏳ Web 版本（如果需要）
 - ⏳ 数据埋点和使用分析
 - ⏳ 更多语言支持

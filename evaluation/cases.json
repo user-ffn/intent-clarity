@@ -1,0 +1,1143 @@
+[
+  {
+    "id": "A1",
+    "category": "A类：模糊愿望",
+    "input": "我想改变自己",
+    "expected_behavior": [
+      "状态诊断：无方向+有动力",
+      "进入深度探索",
+      "问题：最近发生什么让你想改变？/如果三年后你很满意，你是什么样？"
+    ],
+    "forbidden_behavior": [
+      "直接给建议"
+    ],
+    "task_type": "状态探索",
+    "expected_route": "deep_exploration",
+    "max_turns": 5,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "A2",
+    "category": "A类：模糊愿望",
+    "input": "我想赚钱",
+    "expected_behavior": [
+      "状态诊断：有方向（赚钱）+可能无行动",
+      "元问题验证：你是已经有具体想法了，还是在考虑？"
+    ],
+    "forbidden_behavior": [
+      "直接问\"你的赚钱目标是多少\""
+    ],
+    "task_type": "状态探索",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "A3",
+    "category": "A类：模糊愿望",
+    "input": "我想做点事情",
+    "expected_behavior": [
+      "状态诊断：无方向+有动力",
+      "经历回忆策略"
+    ],
+    "forbidden_behavior": [
+      "列举\"你可以学XX/做XX\""
+    ],
+    "task_type": "状态探索",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "A4",
+    "category": "A类：模糊愿望",
+    "input": "我很迷茫",
+    "expected_behavior": [
+      "状态诊断：无方向+无动力",
+      "情绪理解策略",
+      "问：最近发生什么让你有这种感觉？"
+    ],
+    "forbidden_behavior": [
+      "直接给鸡汤"
+    ],
+    "task_type": "状态探索",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "A5",
+    "category": "A类：模糊愿望",
+    "input": "我想成为更好的人",
+    "expected_behavior": [
+      "深度探索：\"更好\"对你来说是什么？"
+    ],
+    "forbidden_behavior": [
+      "假设\"更好\"的定义"
+    ],
+    "task_type": "状态探索",
+    "expected_route": "deep_exploration",
+    "max_turns": 5,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "A6",
+    "category": "A类：模糊愿望",
+    "input": "我想有影响力",
+    "expected_behavior": [
+      "价值探索：为什么影响力对你重要？"
+    ],
+    "forbidden_behavior": [
+      "直接给\"如何获得影响力的方法\""
+    ],
+    "task_type": "状态探索",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "A7",
+    "category": "A类：模糊愿望",
+    "input": "我不满意现状",
+    "expected_behavior": [
+      "理想-现实差距策略",
+      "问：现在最让你不满的是什么？"
+    ],
+    "forbidden_behavior": [
+      "猜测他不满什么"
+    ],
+    "task_type": "状态探索",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "A8",
+    "category": "A类：模糊愿望",
+    "input": "我想找到自己的方向",
+    "expected_behavior": [
+      "经历回忆"
+    ],
+    "forbidden_behavior": [
+      "直接给方向列表"
+    ],
+    "task_type": "状态探索",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "A9",
+    "category": "A类：模糊愿望",
+    "input": "我想做点有意义的事",
+    "expected_behavior": [
+      "价值探索：\"有意义\"对你来说是什么？"
+    ],
+    "forbidden_behavior": [
+      "假设普世的\"有意义\""
+    ],
+    "task_type": "状态探索",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "A10",
+    "category": "A类：模糊愿望",
+    "input": "我想突破自己",
+    "expected_behavior": [
+      "障碍分析：你觉得现在什么限制了你？"
+    ],
+    "forbidden_behavior": [
+      "直接给\"突破方法\""
+    ],
+    "task_type": "状态探索",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "B1",
+    "category": "B类：职业选择",
+    "input": "我要不要考研",
+    "expected_behavior": [
+      "任务类型：辅助决策",
+      "快速澄清：考研的主要原因？/有其他选项吗？"
+    ],
+    "forbidden_behavior": [
+      "直接说\"考研好\"或\"不考好\""
+    ],
+    "task_type": "辅助决策",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "B2",
+    "category": "B类：职业选择",
+    "input": "我想转行做AI",
+    "expected_behavior": [
+      "状态诊断：有方向+可能无行动",
+      "元问题：你是已经决定了，还是在考虑？"
+    ],
+    "forbidden_behavior": [
+      "直接给转行路径"
+    ],
+    "task_type": "辅助决策",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "B3",
+    "category": "B类：职业选择",
+    "input": "我想创业",
+    "expected_behavior": [
+      "元问题：你有具体方向了吗？",
+      "如果没有 → 深度探索",
+      "如果有 → 快速澄清"
+    ],
+    "forbidden_behavior": [
+      "默认他适合创业"
+    ],
+    "task_type": "辅助决策",
+    "expected_route": "deep_exploration",
+    "max_turns": 5,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "B4",
+    "category": "B类：职业选择",
+    "input": "我该不该辞职",
+    "expected_behavior": [
+      "辅助决策",
+      "问：是什么让你想辞职？/辞职后打算做什么？"
+    ],
+    "forbidden_behavior": [
+      "直接判断该不该"
+    ],
+    "task_type": "辅助决策",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "B5",
+    "category": "B类：职业选择",
+    "input": "我不知道适合什么工作",
+    "expected_behavior": [
+      "经历回忆",
+      "能力/兴趣探索"
+    ],
+    "forbidden_behavior": [
+      "列举职业清单"
+    ],
+    "task_type": "辅助决策",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "B6",
+    "category": "B类：职业选择",
+    "input": "我想做产品经理",
+    "expected_behavior": [
+      "元问题：你是已经决定了，还是在考虑？"
+    ],
+    "forbidden_behavior": [
+      "直接给学习路径"
+    ],
+    "task_type": "辅助决策",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "B7",
+    "category": "B类：职业选择",
+    "input": "我羡慕那些自由职业者",
+    "expected_behavior": [
+      "投射提问：你羡慕他们什么？"
+    ],
+    "forbidden_behavior": [
+      "直接说\"你适合自由职业\""
+    ],
+    "task_type": "辅助决策",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "B8",
+    "category": "B类：职业选择",
+    "input": "我想找副业",
+    "expected_behavior": [
+      "快速澄清：主要目的？/时间预算？/技能基础？"
+    ],
+    "forbidden_behavior": [
+      "列举副业清单"
+    ],
+    "task_type": "辅助决策",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "B9",
+    "category": "B类：职业选择",
+    "input": "我要不要读博",
+    "expected_behavior": [
+      "辅助决策",
+      "价值排序：学术兴趣 vs 就业 vs 其他"
+    ],
+    "forbidden_behavior": [
+      "直接说\"读博好不好\""
+    ],
+    "task_type": "辅助决策",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "B10",
+    "category": "B类：职业选择",
+    "input": "我想进大厂",
+    "expected_behavior": [
+      "快速澄清：为什么想进？/当前状态？"
+    ],
+    "forbidden_behavior": [
+      "直接给面试攻略"
+    ],
+    "task_type": "辅助决策",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "C1",
+    "category": "C类：学习需求",
+    "input": "我想学Python",
+    "expected_behavior": [
+      "元问题：你是已经决定了，还是在考虑？",
+      "如果决定了 → 问：用来做什么？"
+    ],
+    "forbidden_behavior": [
+      "直接给Python教程"
+    ],
+    "task_type": "制定路径",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "C2",
+    "category": "C类：学习需求",
+    "input": "我想学AI",
+    "expected_behavior": [
+      "元问题验证",
+      "如果没想清楚为什么 → 深度探索"
+    ],
+    "forbidden_behavior": [
+      "直接给课程推荐"
+    ],
+    "task_type": "制定路径",
+    "expected_route": "deep_exploration",
+    "max_turns": 5,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "C3",
+    "category": "C类：学习需求",
+    "input": "我想提高英语",
+    "expected_behavior": [
+      "快速澄清：当前水平？/用途？/时间？"
+    ],
+    "forbidden_behavior": [
+      "直接给学习方法"
+    ],
+    "task_type": "制定路径",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "C4",
+    "category": "C类：学习需求",
+    "input": "帮我制定一个学习计划",
+    "expected_behavior": [
+      "需求明确度判断：❌（没说学什么）",
+      "问：想学什么？"
+    ],
+    "forbidden_behavior": [
+      "假设学什么"
+    ],
+    "task_type": "制定路径",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "C5",
+    "category": "C类：学习需求",
+    "input": "我想学设计",
+    "expected_behavior": [
+      "元问题 + 快速澄清"
+    ],
+    "forbidden_behavior": [
+      "列举设计课程"
+    ],
+    "task_type": "制定路径",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "C6",
+    "category": "C类：学习需求",
+    "input": "我想自学编程，但不知道从哪开始",
+    "expected_behavior": [
+      "障碍分析：为什么一直没开始？",
+      "快速澄清：编程用来做什么？"
+    ],
+    "forbidden_behavior": [
+      "直接给\"从HTML开始\""
+    ],
+    "task_type": "制定路径",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "C7",
+    "category": "C类：学习需求",
+    "input": "我想考证",
+    "expected_behavior": [
+      "快速澄清：什么证？/为什么考？"
+    ],
+    "forbidden_behavior": [
+      "假设是什么证"
+    ],
+    "task_type": "制定路径",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "C8",
+    "category": "C类：学习需求",
+    "input": "我想提升自己",
+    "expected_behavior": [
+      "深度探索：\"提升\"对你来说是什么？"
+    ],
+    "forbidden_behavior": [
+      "列举提升方向"
+    ],
+    "task_type": "制定路径",
+    "expected_route": "deep_exploration",
+    "max_turns": 5,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "C9",
+    "category": "C类：学习需求",
+    "input": "我想学数据分析",
+    "expected_behavior": [
+      "快速澄清：当前基础？/用途？"
+    ],
+    "forbidden_behavior": [
+      "直接给课程"
+    ],
+    "task_type": "制定路径",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "C10",
+    "category": "C类：学习需求",
+    "input": "我想学一门新技能",
+    "expected_behavior": [
+      "经历回忆：过去学过什么技能？/什么场景下会用？"
+    ],
+    "forbidden_behavior": [
+      "列举技能清单"
+    ],
+    "task_type": "制定路径",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "D1",
+    "category": "D类：产品/项目需求",
+    "input": "我想做一个App",
+    "expected_behavior": [
+      "创造设计任务",
+      "快速澄清：解决什么问题？/目标用户？"
+    ],
+    "forbidden_behavior": [
+      "直接给技术栈"
+    ],
+    "task_type": "创造设计",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "D2",
+    "category": "D类：产品/项目需求",
+    "input": "我有一个创业想法",
+    "expected_behavior": [
+      "快速澄清：什么想法？/为谁解决什么问题？"
+    ],
+    "forbidden_behavior": [
+      "直接评价这个想法好不好"
+    ],
+    "task_type": "创造设计",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "D3",
+    "category": "D类：产品/项目需求",
+    "input": "我想做一个项目",
+    "expected_behavior": [
+      "需求不明确",
+      "问：什么类型的项目？"
+    ],
+    "forbidden_behavior": [
+      "假设项目类型"
+    ],
+    "task_type": "创造设计",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "D4",
+    "category": "D类：产品/项目需求",
+    "input": "用户想要社交功能",
+    "expected_behavior": [
+      "需求明确",
+      "直接帮分析：什么社交功能？/核心场景？"
+    ],
+    "forbidden_behavior": [
+      "问\"你为什么想做产品\""
+    ],
+    "task_type": "创造设计",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "D5",
+    "category": "D类：产品/项目需求",
+    "input": "我想优化我的产品",
+    "expected_behavior": [
+      "快速澄清：什么产品？/主要问题？"
+    ],
+    "forbidden_behavior": [
+      "问\"你的人生目标\""
+    ],
+    "task_type": "创造设计",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "D6",
+    "category": "D类：产品/项目需求",
+    "input": "我想做个工具",
+    "expected_behavior": [
+      "快速澄清：什么工具？/给谁用？"
+    ],
+    "forbidden_behavior": [
+      "深度探索价值观"
+    ],
+    "task_type": "创造设计",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "D7",
+    "category": "D类：产品/项目需求",
+    "input": "我的产品没人用",
+    "expected_behavior": [
+      "需求明确",
+      "直接分析：什么产品？/目标用户？/推广渠道？"
+    ],
+    "forbidden_behavior": [
+      "问\"你为什么做产品\""
+    ],
+    "task_type": "问题诊断",
+    "expected_route": "direct_execution",
+    "max_turns": 0,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "D8",
+    "category": "D类：产品/项目需求",
+    "input": "我想增加一个功能",
+    "expected_behavior": [
+      "快速澄清：什么功能？/解决什么问题？"
+    ],
+    "forbidden_behavior": [
+      "过度探索"
+    ],
+    "task_type": "创造设计",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "D9",
+    "category": "D类：产品/项目需求",
+    "input": "我想重新设计界面",
+    "expected_behavior": [
+      "快速澄清：当前问题？/目标用户反馈？"
+    ],
+    "forbidden_behavior": [
+      "问生涯规划"
+    ],
+    "task_type": "创造设计",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "D10",
+    "category": "D类：产品/项目需求",
+    "input": "帮我想个项目点子",
+    "expected_behavior": [
+      "经历回忆：你擅长什么？/你的背景？"
+    ],
+    "forbidden_behavior": [
+      "直接列举点子"
+    ],
+    "task_type": "创造设计",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "E1",
+    "category": "E类：内容任务",
+    "input": "帮我写一篇文章",
+    "expected_behavior": [
+      "需求不明确（缺主题/受众）",
+      "快速澄清：主题？/给谁看？"
+    ],
+    "forbidden_behavior": [
+      "深度探索"
+    ],
+    "task_type": "生成内容",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "E2",
+    "category": "E类：内容任务",
+    "input": "帮我写一篇关于AI的文章，3000字，给大学生看",
+    "expected_behavior": [
+      "需求基本明确",
+      "补充1-2个问题：核心目的？（科普/职业/趋势）"
+    ],
+    "forbidden_behavior": [
+      "问\"你为什么想写文章\""
+    ],
+    "task_type": "生成内容",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "E3",
+    "category": "E类：内容任务",
+    "input": "我想做个PPT",
+    "expected_behavior": [
+      "快速澄清：什么主题？/给谁看？"
+    ],
+    "forbidden_behavior": [
+      "深度探索"
+    ],
+    "task_type": "生成内容",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "E4",
+    "category": "E类：内容任务",
+    "input": "帮我写个方案",
+    "expected_behavior": [
+      "需求不明确",
+      "问：什么方案？"
+    ],
+    "forbidden_behavior": [
+      "假设方案类型"
+    ],
+    "task_type": "生成内容",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "E5",
+    "category": "E类：内容任务",
+    "input": "我想写公众号",
+    "expected_behavior": [
+      "元问题：你是已经决定了，还是在考虑？",
+      "如果决定了 → 快速澄清：什么定位？"
+    ],
+    "forbidden_behavior": [
+      "直接给运营建议"
+    ],
+    "task_type": "生成内容",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "E6",
+    "category": "E类：内容任务",
+    "input": "帮我润色这段文字",
+    "expected_behavior": [
+      "需求明确",
+      "直接开始润色"
+    ],
+    "forbidden_behavior": [
+      "问\"你为什么要润色\""
+    ],
+    "task_type": "生成内容",
+    "expected_route": "direct_execution",
+    "max_turns": 0,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "E7",
+    "category": "E类：内容任务",
+    "input": "我想写简历",
+    "expected_behavior": [
+      "需求明确",
+      "快速澄清：投什么岗位？/重点突出什么？"
+    ],
+    "forbidden_behavior": [
+      "深度探索职业规划"
+    ],
+    "task_type": "生成内容",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "E8",
+    "category": "E类：内容任务",
+    "input": "帮我写个slogan",
+    "expected_behavior": [
+      "快速澄清：什么产品？/核心价值？"
+    ],
+    "forbidden_behavior": [
+      "过度提问"
+    ],
+    "task_type": "生成内容",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "E9",
+    "category": "E类：内容任务",
+    "input": "我想做视频",
+    "expected_behavior": [
+      "元问题 + 快速澄清"
+    ],
+    "forbidden_behavior": [
+      "深度探索人生方向"
+    ],
+    "task_type": "生成内容",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  },
+  {
+    "id": "E10",
+    "category": "E类：内容任务",
+    "input": "帮我写演讲稿",
+    "expected_behavior": [
+      "快速澄清：什么主题？/听众？/时长？"
+    ],
+    "forbidden_behavior": [
+      "问\"你为什么要演讲\"",
+      "状态判断准确率 ≥ 70%",
+      "平均问题质量 ≥ 5分",
+      "停止时机合理率 ≥ 70%",
+      "平均轮数：明确任务≤3轮，模糊任务≤5轮",
+      "最终效果平均分 ≥ 6分",
+      "状态判断准确率 ≥ 85%",
+      "平均问题质量 ≥ 6分",
+      "停止时机合理率 ≥ 85%",
+      "平均轮数：明确任务≤2轮，模糊任务≤4轮",
+      "最终效果平均分 ≥ 7.5分",
+      "对比普通GPT，是否减少用户修改次数？",
+      "对比普通GPT，是否提高最终满意度？",
+      "是否避免了\"高级聊天\"陷阱？（看起来懂用户，但没推动行动）"
+    ],
+    "task_type": "生成内容",
+    "expected_route": "quick_clarify",
+    "max_turns": 3,
+    "first_question": null,
+    "review": {
+      "route_correct": null,
+      "first_question_effective": null,
+      "over_questioning": null,
+      "actual_turns": null,
+      "failure_reason": ""
+    }
+  }
+]

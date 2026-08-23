@@ -8,6 +8,8 @@
 class QuestionGenerator:
     """问题生成器"""
 
+    MAX_QUESTIONS = 3
+
     # 高频场景专门问题模板（优先匹配）
     HIGH_FREQ_SCENARIOS = {
         "考研": [
@@ -142,12 +144,24 @@ class QuestionGenerator:
 
         # 动态过滤：如果某个信息已经有了，就不问对应的问题
         questions = []
-        for q in all_questions[:3]:  # 最多3个问题
+        for q in all_questions[:self.MAX_QUESTIONS]:  # 最多3个问题
             # 简单判断：如果问题关键词在已知信息里，就跳过
             if not self._info_already_known(q, current_info):
                 questions.append(q)
 
         return questions
+
+    def get_priority_questions(self, task_type, current_info, user_input=""):
+        """
+        返回当前最值得优先补充的问题。
+
+        产品原则：问题不是越多越好，而是优先补齐会改变后续方案的关键信息。
+        该方法保留原有 generate_for_clear_task 的兼容性，供验收和上层编排使用。
+        """
+        questions = self.generate_for_clear_task(
+            task_type, current_info, user_input
+        )
+        return questions[:1]
 
     def _info_already_known(self, question, current_info):
         """
@@ -181,21 +195,32 @@ class QuestionGenerator:
         if "原因" in question_lower or "为什么" in question_lower:
             return current_info.get("reason") is not None
 
+        # 问题诊断相关：现象、已尝试方法和期望结果必须独立记录，
+        # 否则用户已经描述“结果”时仍会被重复追问。
+        if "具体情况" in question_lower or "现象" in question_lower:
+            return current_info.get("context") is not None
+
+        if "尝试过" in question_lower or "方法" in question_lower:
+            return current_info.get("attempts") is not None
+
+        if "期望的结果" in question_lower or "期望结果" in question_lower:
+            return current_info.get("expected_result") is not None
+
         # 选项相关
         if "选项" in question_lower or "还在考虑" in question_lower:
             return current_info.get("options") is not None
 
         return False
 
-    def is_real_obstacle(self, user_input):
+    def classify_obstacle(self, user_input):
         """
-        判断是否是真障碍（需要深度探索）还是执行困惑（直接给路径）
+        区分真障碍、执行困惑和未知状态。
 
         Args:
             user_input: 用户输入
 
         Returns:
-            bool: True=真障碍，False=执行困惑
+            str: real_obstacle / execution_confusion / unknown
         """
         # 真障碍信号
         real_obstacle_keywords = [
@@ -214,18 +239,22 @@ class QuestionGenerator:
         # 检测执行困惑（优先级更高，因为更常见）
         for keyword in execution_confusion_keywords:
             if keyword in user_input_lower:
-                return False  # 不是真障碍
+                return "execution_confusion"  # 不是真障碍
 
         # 检测真障碍
         for keyword in real_obstacle_keywords:
             if keyword in user_input_lower:
-                return True  # 是真障碍
+                return "real_obstacle"  # 是真障碍
 
         # 默认：如果说了"但是"/"可是"，倾向于是真障碍
         if "但是" in user_input_lower or "可是" in user_input_lower:
-            return True
+            return "real_obstacle"
 
-        return False  # 默认不是真障碍
+        return "unknown"
+
+    def is_real_obstacle(self, user_input):
+        """兼容旧接口：仅返回是否识别为真障碍。"""
+        return self.classify_obstacle(user_input) == "real_obstacle"
 
     def generate_confirmation(self, confirmed_info, inferred_info):
         """
